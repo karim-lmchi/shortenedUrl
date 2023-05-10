@@ -15,15 +15,15 @@ import {
   Link
 } from './home.styles';
 
-export const Home = () => {
+export const Home: React.FC = () => {
   const context = useContext(Context);
 
   const generateRandomShortenedUrl = () => {
-    const characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-    let result = '';
+    const characters: string = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+    let result: string = '';
   
     for (let i = 0; i < 6; i++) {
-      const randomIndex = Math.floor(Math.random() * characters.length);
+      const randomIndex: number = Math.floor(Math.random() * characters.length);
       result += characters.charAt(randomIndex);
     }
 
@@ -50,54 +50,40 @@ export const Home = () => {
       context.setSuccess(false);
     }
 
-    fetch(formatUrl(context.inputValue))
-    .then(response => {
-        console.log(response);
-      if (response.status === 200) {
-        console.log("l'url existe");
-      } else {
-        console.log(context.inputValue)
-        console.log(response)
-      }
-    })
-    .catch(error => {
-      console.log(error);
-    });
-
     context.setDiplayResponse(true);
   };
 
   return (
     <HomepageWrapper>
-    <Header />
-    <BodyWrapper>
-    <BodyContent>
-    <Title>URRL</Title>
-    <ActionWrapper>
-    <StyledInput
-      type='text'
-      value={context.inputValue}
-      onChange={e => context.setInputValue(e.target.value)}
-    />
-    <StyledButton
-      onClick={checkUrl}>
-        Raccourcir
-    </StyledButton>
-    </ActionWrapper>
-      <SeparateBloc />
-      {context.displayResponse && (
-        <ResponseWrapper success={context.isSuccess}>
-          <ResponseText success={context.isSuccess}>
-            {
-              context.isSuccess
-                ? <span>Voici le lien raccourci : <Link href={formatUrl(context.inputValue)} target="_blank">{window.location.href}{context.shortenedUrl}</Link></span>
-                : "L'url saisie est invalide"
-              } 
-            </ResponseText>
-          </ResponseWrapper>
-        )}
-    </BodyContent>
-    </BodyWrapper>
-  </HomepageWrapper>
+      <Header />
+      <BodyWrapper>
+        <BodyContent>
+          <Title>URRL</Title>
+          <ActionWrapper>
+          <StyledInput
+            type='text'
+            value={context.inputValue}
+            onChange={e => context.setInputValue(e.target.value)}
+          />
+          <StyledButton
+            onClick={checkUrl}>
+              Raccourcir
+          </StyledButton>
+          </ActionWrapper>
+          <SeparateBloc />
+          {context.displayResponse && (
+            <ResponseWrapper success={context.isSuccess ? context.isSuccess : undefined}>
+              <ResponseText success={context.isSuccess ? context.isSuccess : undefined}>
+                {
+                  context.isSuccess
+                    ? <span>Voici le lien raccourci : <Link href={formatUrl(context.inputValue)} target="_blank">{window.location.href}{context.shortenedUrl}</Link></span>
+                    : "L'url saisie est invalide"
+                  } 
+                </ResponseText>
+              </ResponseWrapper>
+            )}
+        </BodyContent>
+      </BodyWrapper>
+    </HomepageWrapper>
   );
 };

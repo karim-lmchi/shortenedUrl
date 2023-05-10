@@ -79,7 +79,7 @@ export const StyledButton = styled.button`
 `;
 
 export const ResponseWrapper = styled.div<{
-    success: boolean;
+    success: boolean | undefined;
   }>`
     width: 100%;
     background-color: ${props => props.success ? 'LightGreen' : 'LightPink'};
@@ -88,7 +88,7 @@ export const ResponseWrapper = styled.div<{
   `;
     
   export const ResponseText = styled.p<{
-    success: boolean;
+    success: boolean | undefined;
   }>`
     padding: 20px 0;
     margin-left: 20px;

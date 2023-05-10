@@ -11,7 +11,7 @@ type ContextType = {
   setSuccess: Dispatch<SetStateAction<boolean>>,
   displayResponse: boolean,
   setDiplayResponse: Dispatch<SetStateAction<boolean>>,
-}
+};
 
 export const Context = createContext<ContextType>({
   inputValue: '',
