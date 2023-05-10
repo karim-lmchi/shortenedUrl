@@ -1,5 +1,5 @@
 import styled from "styled-components";
-// import Button from '@mui/material/Button';
+import Button from '@mui/material/Button';
 
 export const HomepageWrapper = styled.div`
   width: 100vw;
@@ -64,7 +64,7 @@ export const StyledInput = styled.input`
   padding: 0px 10px
 `;
 
-export const StyledButton = styled.button`
+export const StyledButton = styled(Button)`
   width: 20%;
   height: 40px;
   background-color: #FCF55F;
