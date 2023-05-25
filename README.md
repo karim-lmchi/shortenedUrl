@@ -1,3 +1,7 @@
+# URL Shortener in React with Next.js
+
+The following code illustrates an example of a URL shortener using React with Next.js.
+
 ## Prerequisites
 
 You will need [Node.js](https://nodejs.org) installed on your system.
