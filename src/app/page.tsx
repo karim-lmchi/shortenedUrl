@@ -7,6 +7,8 @@ type ContextType = {
   setInputValue: Dispatch<SetStateAction<string>>,
   shortenedUrl: string,
   setShortenedUrl: Dispatch<SetStateAction<string>>,
+  urlRedirection: string,
+  setUrlRedirection: Dispatch<SetStateAction<string>>,
   isSuccess: boolean,
   setSuccess: Dispatch<SetStateAction<boolean>>,
   displayResponse: boolean,
@@ -18,6 +20,8 @@ export const Context = createContext<ContextType>({
   setInputValue: () => {},
   shortenedUrl: '',
   setShortenedUrl: () => {},
+  urlRedirection: '',
+  setUrlRedirection: () => {},
   isSuccess: false,
   setSuccess: () => {},
   displayResponse: false,
@@ -27,6 +31,7 @@ export const Context = createContext<ContextType>({
 const HomePage: React.FC = () => {
   const [inputValue, setInputValue] = useState('');
   const [shortenedUrl, setShortenedUrl] = useState('');
+  const [urlRedirection, setUrlRedirection] = useState('');
   const [displayResponse, setDiplayResponse] = useState(false);
   const [isSuccess, setSuccess] = useState(false);
 
@@ -36,10 +41,12 @@ const HomePage: React.FC = () => {
       setInputValue: setInputValue,
       isSuccess: isSuccess,
       setSuccess: setSuccess,
-      setDiplayResponse: setDiplayResponse,
       shortenedUrl: shortenedUrl,
-      displayResponse: displayResponse,
       setShortenedUrl: setShortenedUrl,
+      urlRedirection: urlRedirection,
+      setUrlRedirection: setUrlRedirection,
+      displayResponse: displayResponse,
+      setDiplayResponse: setDiplayResponse,
     }} >
       <Home />
     </Context.Provider>

@@ -45,6 +45,7 @@ export const Home: React.FC = () => {
 
     if(isRegexHttp || isRegexWww) {
       generateRandomShortenedUrl();
+      context.setUrlRedirection(context.inputValue);
       context.setSuccess(true);
     } else {
       context.setSuccess(false);
@@ -60,15 +61,16 @@ export const Home: React.FC = () => {
         <BodyContent>
           <Title>URRL</Title>
           <ActionWrapper>
-          <StyledInput
-            type='text'
-            value={context.inputValue}
-            onChange={e => context.setInputValue(e.target.value)}
-          />
-          <StyledButton
-            onClick={checkUrl}>
-              Raccourcir
-          </StyledButton>
+            <StyledInput
+              type='text'
+              value={context.inputValue}
+              onChange={e => context.setInputValue(e.target.value)}
+            />
+            <StyledButton
+              type='button'
+              onClick={checkUrl}>
+                Raccourcir
+            </StyledButton>
           </ActionWrapper>
           <SeparateBloc />
           {context.displayResponse && (
@@ -76,7 +78,7 @@ export const Home: React.FC = () => {
               <ResponseText success={context.isSuccess ? context.isSuccess : undefined}>
                 {
                   context.isSuccess
-                    ? <span>Voici le lien raccourci : <Link href={formatUrl(context.inputValue)} target="_blank">{window.location.href}{context.shortenedUrl}</Link></span>
+                    ? <span>Voici le lien raccourci : <Link href={formatUrl(context.urlRedirection)} target="_blank">{window.location.href}{context.shortenedUrl}</Link></span>
                     : "L'url saisie est invalide"
                   } 
                 </ResponseText>

@@ -49,7 +49,7 @@ export const Title = styled.h1`
   margin-bottom: 40px;
 `;
 
-export const ActionWrapper = styled.div`
+export const ActionWrapper = styled.form`
   display: flex;
   align-items: center;
   justify-content: space-between;
